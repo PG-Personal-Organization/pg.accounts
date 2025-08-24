@@ -1,0 +1,55 @@
+server:
+  error:
+    include-message: always
+  port: 8083
+
+management:
+  server:
+    port: 9083
+
+logging:
+  level:
+    root: info
+  file:
+    name: accounts-ms-app.log
+
+spring:
+  application:
+    name: accounts-microservice
+
+  profiles:
+    active: USER
+
+  config:
+    import: optional:file:.env[.properties]
+
+  datasource:
+    url: jdbc:postgresql://${DATASOURCE_URL}/${DATASOURCE_DATABASE}
+    username: ${DATASOURCE_USER}
+    password: ${DATASOURCE_PASSWORD}
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: ${SHOW_SQL:false}
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+
+#  kafka:
+#    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVER:localhost:9092}
+
+remote-cqrs:
+  http:
+    remote-modules[0]:
+      module-name: context-auth
+      url: ${CONTEXT_AUTH_HOST:http://localhost:8081}/api/cqrs
+    remote-modules[1]:
+      module-name: payments
+      url: ${PAYMENTS_HOST:http://localhost:8082}/api/cqrs
