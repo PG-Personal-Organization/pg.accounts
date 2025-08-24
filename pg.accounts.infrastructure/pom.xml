@@ -18,6 +18,10 @@
             <groupId>pg.accounts</groupId>
             <artifactId>pg.accounts.domain</artifactId>
         </dependency>
+        <dependency>
+            <groupId>pg.accounts</groupId>
+            <artifactId>pg.accounts.application</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.security</groupId>
