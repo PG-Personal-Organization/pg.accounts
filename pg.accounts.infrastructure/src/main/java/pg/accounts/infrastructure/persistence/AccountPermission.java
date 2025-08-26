@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import pg.accounts.domain.AccountViewUsage;
 
+import java.util.Objects;
 import java.util.Set;
 
 @Entity(name = "accounts_permissions")
@@ -27,4 +28,19 @@ public class AccountPermission {
 
     @ElementCollection(fetch = FetchType.EAGER)
     private Set<String> permissions;
+
+    @Override
+    public boolean equals(final Object o) {
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        AccountPermission that = (AccountPermission) o;
+        return Objects.equals(accountPermissionId, that.accountPermissionId) && Objects.equals(account, that.account)
+                && viewUsage == that.viewUsage && Objects.equals(permissions, that.permissions);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(accountPermissionId, account, viewUsage, permissions);
+    }
 }

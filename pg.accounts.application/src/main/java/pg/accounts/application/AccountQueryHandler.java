@@ -3,11 +3,9 @@ package pg.accounts.application;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import pg.accounts.api.model.AccountQuery;
-import pg.accounts.api.model.AccountView;
 import pg.accounts.api.model.AccountViewResponse;
 import pg.accounts.domain.AccountViewUsage;
 import pg.context.auth.api.context.provider.ContextProvider;
-import pg.context.auth.domain.context.UserContext;
 import pg.lib.cqrs.query.QueryHandler;
 
 import java.util.Optional;
@@ -34,7 +32,7 @@ public class AccountQueryHandler implements QueryHandler<AccountQuery, AccountVi
 
     @SneakyThrows
     private boolean hasPermissionsToAccount(final AccountModel account, final AccountViewUsage usage) {
-        var userContext = (UserContext) contextProvider.tryToGetUserContext().orElseThrow();
+        var userContext = contextProvider.tryToGetUserContext().orElseThrow();
         return Optional.ofNullable(account.getRequiredPermissions().get(usage))
                 .map(userContext::hasAllPermissions)
                 .orElse(false);

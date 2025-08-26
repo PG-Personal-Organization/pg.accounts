@@ -11,18 +11,11 @@ import org.springframework.context.annotation.Configuration;
 @EnableCaching
 @Configuration
 public class AccountsCacheConfiguration {
-    private static final String CONTEXT_CACHE = "contextCache";
     private static final String ACCOUNTS_CACHE = "accountsCache";
 
     @Bean
     public CacheManager cacheManager() {
-        return new ConcurrentMapCacheManager(CONTEXT_CACHE, ACCOUNTS_CACHE);
-    }
-
-    @Bean
-    @Qualifier(CONTEXT_CACHE)
-    public Cache contextCache() {
-        return cacheManager().getCache(CONTEXT_CACHE);
+        return new ConcurrentMapCacheManager(ACCOUNTS_CACHE);
     }
 
     /**
