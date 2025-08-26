@@ -3,6 +3,7 @@ package pg.accounts.infrastructure.spring;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import pg.accounts.infrastructure.spring.configuration.AccountsCacheConfiguration;
 import pg.accounts.infrastructure.spring.configuration.AccountsCqrsConfiguration;
 import pg.accounts.infrastructure.spring.configuration.AccountsPersistenceConfiguration;
 import pg.accounts.infrastructure.spring.configuration.AccountsSecurityConfiguration;
@@ -16,6 +17,7 @@ import pg.lib.remote.cqrs.config.RemoteModulesCqrsConfiguration;
         AccountsPersistenceConfiguration.class,
         AccountsSecurityConfiguration.class,
         AccountsCqrsConfiguration.class,
+        AccountsCacheConfiguration.class,
 
         CommonModuleConfiguration.class,
         CommandQueryAutoConfiguration.class,
