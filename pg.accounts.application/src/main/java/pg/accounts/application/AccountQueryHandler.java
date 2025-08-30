@@ -2,8 +2,9 @@ package pg.accounts.application;
 
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
-import pg.accounts.api.model.AccountQuery;
-import pg.accounts.api.model.AccountViewResponse;
+import pg.accounts.api.AccountModel;
+import pg.accounts.api.AccountQuery;
+import pg.accounts.api.AccountViewResponse;
 import pg.accounts.domain.AccountViewUsage;
 import pg.context.auth.api.context.provider.ContextProvider;
 import pg.lib.cqrs.query.QueryHandler;

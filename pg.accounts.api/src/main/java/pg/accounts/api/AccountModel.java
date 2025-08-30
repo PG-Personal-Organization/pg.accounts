@@ -1,7 +1,6 @@
-package pg.accounts.application;
+package pg.accounts.api;
 
 import lombok.*;
-import pg.accounts.api.model.AccountView;
 import pg.accounts.domain.AccountViewUsage;
 
 import java.math.BigDecimal;

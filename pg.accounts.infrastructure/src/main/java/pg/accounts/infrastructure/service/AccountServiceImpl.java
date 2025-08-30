@@ -3,8 +3,7 @@ package pg.accounts.infrastructure.service;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.Cache;
-import org.springframework.stereotype.Service;
-import pg.accounts.application.AccountModel;
+import pg.accounts.api.AccountModel;
 import pg.accounts.application.AccountsService;
 import pg.accounts.infrastructure.persistence.AccountBalance;
 import pg.accounts.infrastructure.persistence.AccountEntity;
@@ -16,7 +15,6 @@ import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.*;
 
-@Service
 @RequiredArgsConstructor
 public class AccountServiceImpl implements AccountsService {
     private final AccountRepository accountRepository;

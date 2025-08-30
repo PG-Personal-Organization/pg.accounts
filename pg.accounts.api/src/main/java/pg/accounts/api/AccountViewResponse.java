@@ -1,4 +1,4 @@
-package pg.accounts.api.model;
+package pg.accounts.api;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,5 +14,5 @@ import java.io.Serializable;
 public class AccountViewResponse implements Serializable {
     private Boolean found;
     private Boolean hasAccess;
-    private AccountView account;
+    private AccountModel account;
 }

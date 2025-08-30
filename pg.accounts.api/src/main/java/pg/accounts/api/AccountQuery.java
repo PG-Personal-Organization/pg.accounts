@@ -1,4 +1,4 @@
-package pg.accounts.api.model;
+package pg.accounts.api;
 
 import lombok.*;
 import pg.accounts.domain.AccountViewUsage;

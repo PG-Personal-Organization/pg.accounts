@@ -11,7 +11,7 @@ logging:
   level:
     root: info
   file:
-    name: accounts-ms-app.log
+    name: logs/accounts-ms-app.log
 
 spring:
   application:
@@ -46,10 +46,7 @@ spring:
     type: caffeine
     cache-names: accountsCache,contextCache
     caffeine:
-      spec: maximumSize=50_000,expireAfterWrite=30m,expireAfterAccess=5m
-
-#  kafka:
-#    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVER:localhost:9092}
+      spec: maximumSize=50000,expireAfterWrite=30m,expireAfterAccess=5m
 
 remote-cqrs:
   http:
