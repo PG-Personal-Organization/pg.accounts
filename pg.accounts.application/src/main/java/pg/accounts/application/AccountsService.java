@@ -7,4 +7,8 @@ public interface AccountsService {
     AccountModel getAccountById(@NonNull String accountId);
 
     AccountModel getAccountByNumber(@NonNull String accountNumber);
+
+    void refreshAccount(@NonNull String accountId, @NonNull String accountNumber);
+
+    void refreshAccount(@NonNull String accountId);
 }

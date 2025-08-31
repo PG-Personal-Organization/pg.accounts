@@ -6,7 +6,7 @@
     <parent>
         <groupId>pg.accounts</groupId>
         <artifactId>accounts</artifactId>
-        <version>1.1.0</version>
+        <version>1.2.0</version>
     </parent>
 
     <artifactId>pg.accounts.standalone</artifactId>
@@ -50,6 +50,11 @@
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+        </dependency>
+
         <!-- Addons -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

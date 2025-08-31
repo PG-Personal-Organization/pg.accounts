@@ -12,10 +12,15 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AccountModel implements AccountView {
+    @NonNull
     private String accountId;
+    @NonNull
     private String accountNumber;
+    @NonNull
     private Map</* currency */String, BigDecimal> availableBalance;
+    @NonNull
     private Map</* currency */String, BigDecimal> bookedBalance;
+    @NonNull
     private Map<AccountViewUsage, Set</* permission */String>> requiredPermissions;
 
     @Override

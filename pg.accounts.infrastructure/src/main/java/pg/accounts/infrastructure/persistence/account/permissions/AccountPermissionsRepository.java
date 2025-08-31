@@ -1,4 +1,4 @@
-package pg.accounts.infrastructure.persistence;
+package pg.accounts.infrastructure.persistence.account.permissions;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

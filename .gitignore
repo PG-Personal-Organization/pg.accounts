@@ -1,6 +1,7 @@
 .env
 settings.xml
 accounts-ms-app.log
+accounts-ms-app.log**
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar

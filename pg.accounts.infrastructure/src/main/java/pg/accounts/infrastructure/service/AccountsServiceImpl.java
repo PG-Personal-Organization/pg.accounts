@@ -5,10 +5,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.cache.Cache;
 import pg.accounts.api.AccountModel;
 import pg.accounts.application.AccountsService;
-import pg.accounts.infrastructure.persistence.AccountBalance;
-import pg.accounts.infrastructure.persistence.AccountEntity;
-import pg.accounts.infrastructure.persistence.AccountPermission;
-import pg.accounts.infrastructure.persistence.AccountRepository;
+import pg.accounts.infrastructure.persistence.account.balances.AccountBalance;
+import pg.accounts.infrastructure.persistence.account.AccountEntity;
+import pg.accounts.infrastructure.persistence.account.permissions.AccountPermission;
+import pg.accounts.infrastructure.persistence.account.AccountRepository;
 
 import java.math.BigDecimal;
 import java.util.stream.Collectors;
@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 import static java.util.stream.Collectors.*;
 
 @RequiredArgsConstructor
-public class AccountServiceImpl implements AccountsService {
+public class AccountsServiceImpl implements AccountsService {
     private final AccountRepository accountRepository;
     private final Cache accountsCache;
 
@@ -44,6 +44,28 @@ public class AccountServiceImpl implements AccountsService {
             accountsCache.put(accountNumber, accountModel);
         }
         return accountModel;
+    }
+
+    @Override
+    public void refreshAccount(final @NonNull String accountId, final @NonNull String accountNumber) {
+        if (accountsCache != null) {
+            accountsCache.evict(accountId);
+            accountsCache.evict(accountNumber);
+        }
+    }
+
+    @Override
+    public void refreshAccount(final @NonNull String accountId) {
+        if (accountsCache != null) {
+            var account = accountsCache.get(accountId, AccountModel.class);
+            accountsCache.evict(accountId);
+
+            if (account != null) {
+                accountsCache.evict(account.getAccountNumber());
+            } else {
+                accountsCache.evict(accountRepository.findById(accountId).orElseThrow().getAccountNumber());
+            }
+        }
     }
 
     private AccountModel toAccountModel(final @NonNull AccountEntity accountEntity) {

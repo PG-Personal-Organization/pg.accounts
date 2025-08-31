@@ -1,9 +1,6 @@
 package pg.accounts.api;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
 
@@ -12,7 +9,10 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AccountViewResponse implements Serializable {
+    @NonNull
     private Boolean found;
+    @NonNull
     private Boolean hasAccess;
+    @NonNull
     private AccountModel account;
 }

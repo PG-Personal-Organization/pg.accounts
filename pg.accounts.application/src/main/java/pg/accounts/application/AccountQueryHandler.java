@@ -1,20 +1,14 @@
 package pg.accounts.application;
 
 import lombok.RequiredArgsConstructor;
-import lombok.SneakyThrows;
-import pg.accounts.api.AccountModel;
 import pg.accounts.api.AccountQuery;
 import pg.accounts.api.AccountViewResponse;
-import pg.accounts.domain.AccountViewUsage;
-import pg.context.auth.api.context.provider.ContextProvider;
 import pg.lib.cqrs.query.QueryHandler;
-
-import java.util.Optional;
 
 @RequiredArgsConstructor
 public class AccountQueryHandler implements QueryHandler<AccountQuery, AccountViewResponse> {
     private final AccountsService accountsService;
-    private final ContextProvider contextProvider;
+    private final AccountPermissionService accountPermissionService;
 
     @Override
     public AccountViewResponse handle(final AccountQuery query) {
@@ -24,18 +18,10 @@ public class AccountQueryHandler implements QueryHandler<AccountQuery, AccountVi
             return AccountViewResponse.builder().found(Boolean.FALSE).build();
         }
 
-        if (!hasPermissionsToAccount(account, query.getViewUsage())) {
+        if (!accountPermissionService.hasPermissionsToAccount(account, query.getViewUsage())) {
             return AccountViewResponse.builder().found(Boolean.TRUE).hasAccess(Boolean.FALSE).build();
         }
 
         return AccountViewResponse.builder().found(Boolean.TRUE).hasAccess(Boolean.TRUE).account(account).build();
-    }
-
-    @SneakyThrows
-    private boolean hasPermissionsToAccount(final AccountModel account, final AccountViewUsage usage) {
-        var userContext = contextProvider.tryToGetUserContext().orElseThrow();
-        return Optional.ofNullable(account.getRequiredPermissions().get(usage))
-                .map(userContext::hasAllPermissions)
-                .orElse(false);
     }
 }

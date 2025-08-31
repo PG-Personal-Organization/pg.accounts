@@ -1,8 +1,9 @@
-package pg.accounts.infrastructure.persistence;
+package pg.accounts.infrastructure.persistence.account.permissions;
 
 import jakarta.persistence.*;
 import lombok.*;
 import pg.accounts.domain.AccountViewUsage;
+import pg.accounts.infrastructure.persistence.account.AccountEntity;
 
 import java.util.Objects;
 import java.util.Set;

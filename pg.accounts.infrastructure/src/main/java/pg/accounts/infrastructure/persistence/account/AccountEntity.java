@@ -1,9 +1,11 @@
-package pg.accounts.infrastructure.persistence;
+package pg.accounts.infrastructure.persistence.account;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import lombok.*;
+import pg.accounts.infrastructure.persistence.account.balances.AccountBalance;
+import pg.accounts.infrastructure.persistence.account.permissions.AccountPermission;
 
 import java.util.List;
 import java.util.Objects;
