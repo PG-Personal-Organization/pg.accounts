@@ -6,7 +6,7 @@
     <parent>
         <groupId>pg.accounts</groupId>
         <artifactId>accounts</artifactId>
-        <version>1.2.1</version>
+        <version>1.2.2</version>
     </parent>
 
     <artifactId>pg.accounts.standalone</artifactId>
@@ -54,6 +54,13 @@
             <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
         </dependency>
+
+        <!-- Metrics -->
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-registry-prometheus</artifactId>
+        </dependency>
+
 
         <!-- Addons -->
         <dependency>
