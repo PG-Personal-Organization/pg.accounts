@@ -56,7 +56,7 @@ class AccountsAppIntegrationTest {
             .userId("1")
             .username("MOCK_USER")
             .contextToken("MOCK_TOKEN")
-            .roles(Set.of("ROLE_VIEW", "ROLE_BOOK"))
+            .roles(Set.of("VIEW", "BOOK"))
             .build();
 
     @BeforeEach

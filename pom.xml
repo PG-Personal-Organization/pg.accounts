@@ -13,7 +13,7 @@
     <groupId>pg.accounts</groupId>
     <artifactId>accounts</artifactId>
     <packaging>pom</packaging>
-    <version>1.2.0</version>
+    <version>1.2.1</version>
 
     <modules>
         <module>pg.accounts.api</module>
@@ -32,7 +32,7 @@
 
         <!-- Libraries -->
         <pg-lib.version>2.3.0</pg-lib.version>
-        <pg-context-auth.version>3.3.0</pg-context-auth.version>
+        <pg-context-auth.version>3.3.1</pg-context-auth.version>
     </properties>
 
     <dependencyManagement>
