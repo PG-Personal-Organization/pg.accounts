@@ -9,10 +9,17 @@ import pg.accounts.application.booking.BookAccountBalanceCommandHandler;
 import pg.accounts.application.booking.BookingService;
 import pg.accounts.application.booking.ProcessAccountBalanceCommandHandler;
 import pg.accounts.application.booking.RelieveAccountBalanceCommandHandler;
+import pg.accounts.infrastructure.spring.delivery.CqrsDomainHttpEndpoint;
 import pg.context.auth.api.context.provider.ContextProvider;
+import pg.lib.cqrs.service.ServiceExecutor;
 
 @Configuration
 public class AccountsCqrsConfiguration {
+
+    @Bean
+    public CqrsDomainHttpEndpoint cqrsDomainHttpEndpoint(final ServiceExecutor serviceExecutor) {
+        return new CqrsDomainHttpEndpoint(serviceExecutor);
+    }
 
     @Bean
     public AccountQueryHandler accountQueryHandler(final AccountsService accountsService,
