@@ -15,7 +15,7 @@ public class AccountQueryHandler implements QueryHandler<AccountQuery, AccountVi
         var account = accountsService.getAccountByNumber(query.getAccountNumber());
 
         if (account == null) {
-            return AccountViewResponse.builder().found(Boolean.FALSE).build();
+            return AccountViewResponse.builder().found(Boolean.FALSE).hasAccess(Boolean.FALSE).build();
         }
 
         if (!accountPermissionService.hasPermissionsToAccount(account, query.getViewUsage())) {

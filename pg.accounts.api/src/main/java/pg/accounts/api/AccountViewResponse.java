@@ -1,6 +1,7 @@
 package pg.accounts.api;
 
 import lombok.*;
+import org.springframework.lang.Nullable;
 
 import java.io.Serializable;
 
@@ -13,6 +14,6 @@ public class AccountViewResponse implements Serializable {
     private Boolean found;
     @NonNull
     private Boolean hasAccess;
-    @NonNull
+    @Nullable
     private AccountModel account;
 }
