@@ -7,7 +7,7 @@
     <parent>
         <groupId>pg.accounts</groupId>
         <artifactId>accounts</artifactId>
-        <version>1.2.2</version>
+        <version>1.2.3</version>
     </parent>
 
     <artifactId>pg.accounts.domain</artifactId>

@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import pg.accounts.api.AccountQuery;
+import pg.accounts.api.AccountViewResponse;
 import pg.accounts.api.booking.BookAccountBalanceCommand;
 import pg.accounts.api.booking.ProcessAccountBalanceCommand;
 import pg.accounts.api.booking.RelieveAccountBalanceCommand;
@@ -21,6 +23,12 @@ import pg.lib.cqrs.service.ServiceExecutor;
 @Tag(name = "CQRS")
 public class CqrsDomainHttpEndpoint {
     private final ServiceExecutor serviceExecutor;
+
+    @PostMapping(CqrsUtils.ACCOUNT_QUERY_PATH)
+    public AccountViewResponse getAccountView(final @Valid @NonNull @RequestBody AccountQuery query) {
+        log.info("Started execution of AccountQuery: {}", query);
+        return serviceExecutor.executeQuery(query);
+    }
 
     @PostMapping(CqrsUtils.BOOK_ACCOUNT_BALANCE_PATH)
     public String book(final @Valid @NonNull @RequestBody BookAccountBalanceCommand command) {
