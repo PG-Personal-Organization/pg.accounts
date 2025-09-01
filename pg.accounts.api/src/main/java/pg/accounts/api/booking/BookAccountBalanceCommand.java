@@ -4,14 +4,13 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 import pg.lib.cqrs.command.Command;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
-@ToString
-@EqualsAndHashCode
-@AllArgsConstructor(staticName = "of")
+@Data
 @NoArgsConstructor
-@Getter
-public class BookAccountBalanceCommand implements Command<String> {
+@AllArgsConstructor(staticName = "of")
+public class BookAccountBalanceCommand implements Command<String>, Serializable {
     @NotBlank
     private String accountId;
     @NotBlank

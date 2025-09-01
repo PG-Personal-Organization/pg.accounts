@@ -4,12 +4,12 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 import pg.lib.cqrs.command.Command;
 
-@ToString
-@EqualsAndHashCode
-@AllArgsConstructor(staticName = "of")
+import java.io.Serializable;
+
+@Data
 @NoArgsConstructor
-@Getter
-public class RelieveAccountBalanceCommand implements Command<Void> {
+@AllArgsConstructor(staticName = "of")
+public class RelieveAccountBalanceCommand implements Command<Void>, Serializable {
     @NotBlank
     private String accountId;
     @NotBlank

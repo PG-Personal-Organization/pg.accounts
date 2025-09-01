@@ -4,12 +4,12 @@ import lombok.*;
 import pg.accounts.domain.AccountViewUsage;
 import pg.lib.cqrs.query.Query;
 
-@ToString
-@EqualsAndHashCode
-@AllArgsConstructor(staticName = "of")
+import java.io.Serializable;
+
+@Data
 @NoArgsConstructor
-@Getter
-public class AccountQuery implements Query<AccountViewResponse> {
+@AllArgsConstructor(staticName = "of")
+public class AccountQuery implements Query<AccountViewResponse>, Serializable {
     private String accountNumber;
     private AccountViewUsage viewUsage;
 }
