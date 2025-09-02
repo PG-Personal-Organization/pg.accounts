@@ -26,25 +26,25 @@ public class CqrsDomainHttpEndpoint {
 
     @PostMapping(CqrsUtils.ACCOUNT_QUERY_PATH)
     public AccountViewResponse getAccountView(final @Valid @NonNull @RequestBody AccountQuery query) {
-        log.info("Started execution of AccountQuery: {}", query);
+        log.debug("Started execution of AccountQuery: {}", query);
         return serviceExecutor.executeQuery(query);
     }
 
     @PostMapping(CqrsUtils.BOOK_ACCOUNT_BALANCE_PATH)
     public String book(final @Valid @NonNull @RequestBody BookAccountBalanceCommand command) {
-        log.info("Started execution of BookAccountBalanceCommand: {}", command);
+        log.debug("Started execution of BookAccountBalanceCommand: {}", command);
         return serviceExecutor.executeCommand(command);
     }
 
     @PostMapping(CqrsUtils.PROCESS_ACCOUNT_BALANCE_PATH)
     public Void process(final @Valid @NonNull @RequestBody ProcessAccountBalanceCommand command) {
-        log.info("Started execution of ProcessAccountBalanceCommand: {}", command);
+        log.debug("Started execution of ProcessAccountBalanceCommand: {}", command);
         return serviceExecutor.executeCommand(command);
     }
 
     @PostMapping(CqrsUtils.RELIEVE_ACCOUNT_BALANCE_PATH)
     public Void relieve(final @Valid @NonNull @RequestBody RelieveAccountBalanceCommand command) {
-        log.info("Started execution of RelieveAccountBalanceCommand: {}", command);
+        log.debug("Started execution of RelieveAccountBalanceCommand: {}", command);
         return serviceExecutor.executeCommand(command);
     }
 }
