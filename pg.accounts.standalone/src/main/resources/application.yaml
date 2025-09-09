@@ -73,3 +73,8 @@ remote-cqrs:
     remote-modules[1]:
       module-name: payments
       url: ${PAYMENTS_HOST:http://localhost:8082}/api/cqrs
+
+pg:
+  kafka:
+    bootstrap-server: ${KAFKA_BOOTSTRAP_SERVER:localhost:9092}
+    enabled: true
